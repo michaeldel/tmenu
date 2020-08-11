@@ -14,8 +14,9 @@ sleep 0.1
 xdotool search --all --pid $pid --class '.*' \
     set_window --overrideredirect 1 \
     windowreparent $parent \
+    windowsize --sync 100% $h \
     windowmove --sync 0 0 \
-    windowsize --sync 100% $h 
+    windowmap --sync
 
 wid=$(xdotool search --all --pid $pid --class '.*')
 # focus grab has to be forced
