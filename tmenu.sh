@@ -5,7 +5,8 @@ h=256
 
 mkfifo -m 600 $pipe || exit 1
 
-alacritty -e sh -c "${@} > ${pipe} < /proc/$$/fd/0" &
+command="${@} > ${pipe} < /proc/$$/fd/0"
+alacritty -e sh -c "$command" &
 pid=$!
 trap "kill $pid" SIGINT SIGHUP SIGTERM
 
