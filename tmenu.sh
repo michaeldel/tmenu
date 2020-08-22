@@ -1,6 +1,24 @@
 #!/usr/bin/env bash
+POSITIONAL=()
+
+while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+        -w)
+            parent="$2"
+            shift
+            shift
+            ;;
+        *)
+            POSITIONAL+=("$1")
+            shift
+            ;;
+    esac
+done
+set -- "${POSITIONAL[@]}"
+
 pipe=$(mktemp -u)
-parent=$(xwininfo -root | sed -nr 's/.*Window id: (0x[^ ]+).*/\1/p')
+parent=${parent:-$(xwininfo -root | sed -nr 's/.*Window id: (0x[^ ]+).*/\1/p')}
 h=256
 
 mkfifo -m 600 $pipe || exit 1
