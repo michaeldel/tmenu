@@ -1,11 +1,11 @@
 all: tmenu
 
 tmenu: tmenu.sh
-	cp tmenu.sh bin/tmenu
+	cp tmenu.sh tmenu
 
 install: tmenu
 	mkdir -p $(DESDIR)$(PREFIX)/bin
-	install bin/tmenu $(DESTDIR)$(PREFIX)/bin/
+	install tmenu $(DESTDIR)$(PREFIX)/bin/
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/tmenu
