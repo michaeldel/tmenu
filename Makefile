@@ -4,7 +4,7 @@ tmenu: tmenu.sh
 	cp tmenu.sh tmenu
 
 install: tmenu
-	mkdir -p $(DESDIR)$(PREFIX)/bin
+	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	install tmenu $(DESTDIR)$(PREFIX)/bin/
 
 uninstall:
